@@ -11,7 +11,7 @@ func main() {
  fmt.Printf("------%f-------", boilingF)
  
  mutiresult.Error_debug()
-
+ 
 
 }
 
