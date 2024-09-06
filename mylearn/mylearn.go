@@ -1,45 +1,23 @@
-package main
+
+package mylearn
 
 import (
 	"fmt"
 	"mymath"
 	"strings"
-	//"mslice"
-	"mutiresult" 
 )
 
-const boilingF = 212.0
-
-func main() {
-  // stud()
-  // slice_stu()
-  //  make_slice()
-  //append_slice()
-  //cap_reviewMemerty()
-  //fmt_str()
-  // arr := [5]int{1,2,3,4,5}
-  // modifyArr([5]int(arr))
- // mslice.DeleteSlice()
- // mslice.CopyOperation()
-
- // fruit := mslice.GetTotal()
- // fmt.Println(fruit("茄子",34))
- mutiresult.Error_debug()
-
-}
-
-
-func stud(){
+func Stud(){
 
 	const a int = 10
 	fmt.Println(a)
 
 	v := 1
-	incr(&v)
-	fmt.Println(incr(&v))
+	Incr(&v)
+	fmt.Println(Incr(&v))
 
-	fmt.Println(f())
-	fmt.Println(f())
+	fmt.Println(Fu())
+	fmt.Println(Fu())
 
 	p := new(int)
 	fmt.Println(*p)
@@ -75,20 +53,20 @@ func stud(){
 
 
 
-func incr(p *int) int {
+func Incr(p *int) int {
 	*p++ // 非常重要：只是增加p指向的变量的值，并不改变p指针！！！
 	fmt.Println(*p, p)
 	return *p
 }
 
-func f() *int {
+func Fu() *int {
 	v := 1
 	fmt.Println(&v)
 	return &v
 }
 
 // 切片学习
-func slice_stu() {
+func Slice_stu() {
 	// 定义一个切片
 	var numbers = make([]int, 3, 5)
 	fmt.Printf("len=%d cap=%d slice=%v\n", len(numbers), cap(numbers), numbers)
@@ -149,7 +127,7 @@ func slice_stu() {
 }
 
 //make函数搞切片
-func make_slice() {
+func Make_slice() {
 	// make 
    slice0 := make([]string, 3, 5)
    slice0[0] = "a"
@@ -172,7 +150,7 @@ fmt.Printf("%p, %p\n", &d, &d[0])
 }
 
 
-func append_slice(){
+func Append_slice(){
 	a := []int{1,2,3,4: 990}
 	b := []int{4,5,6}
 	c := append(a, b...)
@@ -192,7 +170,7 @@ func append_slice(){
 }
 
 //slice中cap重新分配规律
-func cap_reviewMemerty(){
+func Cap_reviewMemerty(){
 	s := make([]int, 0, 10)
 	c := cap(s)
     fmt.Println(c)  // 10 cap
@@ -209,7 +187,7 @@ func cap_reviewMemerty(){
 
 //格式化工具  Sprintf
 
-func fmt_str(){
+func Fmt_str(){
     greetstring := "hello,world"
 	ss := fmt.Sprintf("%s,Jobs", greetstring)
 	fmt.Println(ss)
@@ -225,7 +203,7 @@ func fmt_str(){
 }
 
 
-func modifyArr(a [5]int){
+func ModifyArr(a [5]int){
     a[0] = 200
 	fmt.Println(a)
 }
