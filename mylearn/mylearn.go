@@ -1,4 +1,3 @@
-
 package mylearn
 
 import (
@@ -7,7 +6,7 @@ import (
 	"strings"
 )
 
-func Stud(){
+func Stud() {
 
 	const a int = 10
 	fmt.Println(a)
@@ -51,8 +50,6 @@ func Stud(){
 	fmt.Println("strarr =", strarr, strarr[0])
 }
 
-
-
 func Incr(p *int) int {
 	*p++ // 非常重要：只是增加p指向的变量的值，并不改变p指针！！！
 	fmt.Println(*p, p)
@@ -87,7 +84,7 @@ func Slice_stu() {
 	var slice2 []int = arr[5:10]       //可以简写为 var slice[]int = arr[start:]
 	var slice3 []int = arr[0:len(arr)] //var slice []int = arr[:]
 	var slice4 = arr[:len(arr)-1]      //去掉切片的最后一个元素
-	 slice66 := arr[0:]  //等价slice3
+	slice66 := arr[0:]                 //等价slice3
 
 	fmt.Printf("su：arr %v\n", arr)
 	fmt.Printf("su：slice0 %v\n", slice0)
@@ -110,13 +107,12 @@ func Slice_stu() {
 	fmt.Printf("局部变量： slice8 %v\n", slice8)
 	fmt.Printf("局部变量： slice9 %v\n", slice9)
 
-
 	s10086 := []int{1, 2, 3, 4, 5, 6: 7, 8, 9, 10}
 	fmt.Println(s10086)
 	pzslice := &s10086[3]
 	*pzslice += 110
 	fmt.Println(s10086)
-    
+
 	data := [][]int{
 		{1, 2, 3},
 		{4, 5, 6},
@@ -126,84 +122,82 @@ func Slice_stu() {
 
 }
 
-//make函数搞切片
+// make函数搞切片
 func Make_slice() {
-	// make 
-   slice0 := make([]string, 3, 5)
-   slice0[0] = "a"
-  // fmt.Println(slice0)
-    
-   d := [5]struct {
-	x int
-}{}
+	// make
+	slice0 := make([]string, 3, 5)
+	slice0[0] = "a"
+	// fmt.Println(slice0)
 
-s := d[:]
+	d := [5]struct {
+		x int
+	}{}
 
-d[1].x = 10
-s[2].x = 20
+	s := d[:]
 
-fmt.Println(d)
-fmt.Printf("%p, %p\n", &d, &d[0])
-   //[{0} {10} {20} {0} {0}]
-   //0xc0000b2000, 0xc0000b2000
+	d[1].x = 10
+	s[2].x = 20
+
+	fmt.Println(d)
+	fmt.Printf("%p, %p\n", &d, &d[0])
+	//[{0} {10} {20} {0} {0}]
+	//0xc0000b2000, 0xc0000b2000
 
 }
 
-
-func Append_slice(){
-	a := []int{1,2,3,4: 990}
-	b := []int{4,5,6}
+func Append_slice() {
+	a := []int{1, 2, 3, 4: 990}
+	b := []int{4, 5, 6}
 	c := append(a, b...)
-    fmt.Println(c) //[1 2 3 4 5 6]
-	d := append(c,4)
+	fmt.Println(c) //[1 2 3 4 5 6]
+	d := append(c, 4)
 	fmt.Println(d) //[1 2 3 4 5 6 4]
-	e := append(d,4,5,6,7,8,9,10)
+	e := append(d, 4, 5, 6, 7, 8, 9, 10)
 	fmt.Println(e) //[1 2 3 4 5 6 4 4 5 6 7 8 9 10]
-    data := [...]int{0, 1, 2, 3, 4, 10: 0}
-	fmt.Printf("cap = %d\n",cap(data))
-    sdata := append(data[:],100)
+	data := [...]int{0, 1, 2, 3, 4, 10: 0}
+	fmt.Printf("cap = %d\n", cap(data))
+	sdata := append(data[:], 100)
 	fmt.Println(sdata)
 
 	ss := sdata[:2:3] // 3-0 =cap ,len = 2-1 其实索引为0
-	fmt.Println(ss) //[0 1]
+	fmt.Println(ss)   //[0 1]
 
 }
 
-//slice中cap重新分配规律
-func Cap_reviewMemerty(){
+// slice中cap重新分配规律
+func Cap_reviewMemerty() {
 	s := make([]int, 0, 10)
 	c := cap(s)
-    fmt.Println(c)  // 10 cap
+	fmt.Println(c) // 10 cap
 	for i := 0; i < 20; i++ {
 		s = append(s, i)
 		fmt.Println(s)
 		if n := cap(s); n > c {
 			fmt.Printf("cap: %d -> %d\n", c, n)
 			c = n
-			fmt.Printf("len: %d\n c = %d", len(s),c)
+			fmt.Printf("len: %d\n c = %d", len(s), c)
 		}
 	}
 }
 
 //格式化工具  Sprintf
 
-func Fmt_str(){
-    greetstring := "hello,world"
+func Fmt_str() {
+	greetstring := "hello,world"
 	ss := fmt.Sprintf("%s,Jobs", greetstring)
 	fmt.Println(ss)
 
-	var arr_1 [5] int
+	var arr_1 [5]int
 	fmt.Println(arr_1)
 	arr_1[0] = 101010
 	fmt.Println(arr_1)
 
-	arr_5 := [5] int {0:3, 1:5, 4:6}
+	arr_5 := [5]int{0: 3, 1: 5, 4: 6}
 	fmt.Println(arr_5)
 
 }
 
-
-func ModifyArr(a [5]int){
-    a[0] = 200
+func ModifyArr(a [5]int) {
+	a[0] = 200
 	fmt.Println(a)
 }
