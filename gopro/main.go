@@ -12,8 +12,9 @@ func main() {
  fmt.Printf("------%f-------\n", boilingF)
  
  //mutiresult.Error_debug()
- //mutiresult.Defertest()
+  //mutiresult.Defertest()
   deferFunc.DeferTud()
+  fmt.Println(deferFunc.Test())
 
 }
 
