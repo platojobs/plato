@@ -25,7 +25,7 @@ func Error_debug() {
 
 // 为函数准备充足的返回值
 func Error_re() {
-	t ,k := mySqrt(25.0)
+	t, k := mySqrt(25.0)
 	fmt.Println(t)
 	fmt.Println(k)
 }
@@ -35,6 +35,25 @@ func mySqrt(f float64) (v float64, ok bool) {
 		return
 	}
 	return math.Sqrt(f), true
+}
+
+func Defertest() {
+
+	fmt.Println("程序开始执行")
+	defer fmt.Println(1)
+	defer fmt.Println(2)
+	defer fmt.Println(3)
+	fmt.Println("程序执行结束")
+
+	/*
+		执行结果:
+		程序开始执行
+		程序执行结束
+		3
+		2
+		1
+	*/
+
 }
 
 
