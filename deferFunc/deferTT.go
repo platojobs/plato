@@ -31,17 +31,17 @@ func DeferTud() {
 	fmt.Println("程序结束")
 
 	/*
-	程序开始
-	我是first
-	我是second
-	我是third
-	程序结束
-	50
-	num2 20
-	num1 10
-	30
-	20
-	我是first
+		程序开始
+		我是first
+		我是second
+		我是third
+		程序结束
+		50
+		num2 20
+		num1 10
+		30
+		20
+		我是first
 	*/
 
 }
@@ -63,7 +63,7 @@ func AnonymityFunc() {
 
 }
 
-// 返回值未设置变量名
+// 返回值未设置变量名,那么返回值不可以修改
 func Test() int {
 	var i int // 0
 	defer func() {
@@ -84,6 +84,31 @@ func Test() int {
 		defer1: 1
 		defer2: 2
 		0
+	*/
+
+}
+
+// 返回值设置变量名，那么返回值将会获得修改
+func Test1() (i int) {
+
+	defer func() {
+		i++
+		fmt.Println(i)
+		fmt.Println("defer2:", i) //2
+	}()
+	defer func() {
+		i++
+		fmt.Println(i)
+		fmt.Println("defer1:", i) //2
+	}()
+	return i
+
+	/*
+	1
+	defer1: 1
+	2
+	defer2: 2
+	2
 	*/
 
 }

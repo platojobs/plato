@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"mymath"
 	"strings"
+	
 )
 
 func Stud() {
@@ -200,4 +201,66 @@ func Fmt_str() {
 func ModifyArr(a [5]int) {
 	a[0] = 200
 	fmt.Println(a)
+}
+
+
+
+func Functions(){
+
+	fn := func ()  {
+		fmt.Println("hello-func")
+	}
+	fn()
+
+	fns := []func(){
+		func() {
+			fmt.Println("hello-func1")
+		},
+		func() {
+			fmt.Println("hello-func2")
+		},
+		func() {
+			fmt.Println("hello-func3")
+		},
+	}
+	fns[0]()
+   
+	d := struct {
+		fn func() string
+	}{
+		fn: func() string { 
+			return "hello" 
+		},
+	}
+    fmt.Println(d.fn())
+
+	fc := make(chan func() string,2)
+	fc <- func() string { return "hello" }
+	fmt.Println(<- fc)
+	fmt.Println(fc)
+	
+	
+
+}
+
+
+func anonymous() func() int {
+	i := 0
+	b := func() int {
+		i++
+		fmt.Println(i)
+		return i
+	}
+	return b
+}
+
+func AnoyMain() {
+	
+   c := anonymous()
+   c()
+   c()
+   c()
+
+   anonymous()
+
 }
