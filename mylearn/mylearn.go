@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"mymath"
 	"strings"
-	
+	"errors"
 )
 
 func Stud() {
@@ -264,3 +264,116 @@ func AnoyMain() {
    anonymous()
 
 }
+
+
+// 返回2个函数类型的返回值
+func test01(base int) (func(int) int, func(int) int) {
+    // 定义2个函数，并返回
+    // 相加
+    add := func(i int) int {
+        base += i
+        return base
+    }
+    // 相减
+    sub := func(i int) int {
+        base -= i
+        return base
+    }
+    // 返回
+    return add, sub
+}
+
+
+func TwoFunc(){
+
+	f1, f2 := test01(10)
+    // base一直是没有消
+    fmt.Println(f1(1), f2(2))
+    // 此时base是9
+    fmt.Println(f1(3), f2(4))
+
+	/*
+	11 9
+    12 8
+	*/
+}
+
+func Whatever(){
+	var whatever [5]struct{}
+	 for i := range whatever {
+		defer func() { 
+			fmt.Printf("helllo==%d\n",i)
+			fmt.Println(i) 
+			}()
+	}
+	// defer语句的变量在defer声明时就已经确定了
+    // 先进后出
+	/*
+	4
+	3
+	2
+	1
+	0
+	*/
+
+
+}
+
+
+type Test struct {
+	name string
+}
+
+func(t *Test)close(){
+  fmt.Println(t.name,"closed")
+}
+
+func CClose(){
+	ts := []Test{{"a"},{"b"},{"c"}}
+	for _,t := range ts {
+		defer t.close()
+	}
+}
+
+
+func ttest() {
+    x, y := 10, 20
+
+    defer func(i int) {
+        println("defer:", i, y) // y 闭包引用
+    }(x) // x 被复制
+
+    x += 10
+    y += 100
+    println("x =", x, "y =", y)
+
+}
+
+func CCmain() {
+    ttest()
+	/*
+	x = 20 y = 120
+    defer: 10 120
+	*/
+}
+
+/*
+third defer err divided by zero!
+second defer err <nil>
+first defer err <nil>
+*/
+
+func Foo(a, b int) (i int, err error) {
+	defer fmt.Printf("first defer err %v\n", err)
+	defer func(err error) { fmt.Printf("second defer err %v\n", err) }(err)
+	defer func() { fmt.Printf("third defer err %v\n", err) }()
+	defer func(){ fmt.Println(err) }()
+	if b == 0 {
+		err = errors.New("divided by zero")
+		return
+	}
+  
+	i = a / b
+	return
+	
+  }
