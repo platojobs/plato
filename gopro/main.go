@@ -34,4 +34,9 @@ func main() {
 	mylearn.JobTestSruct()
 	fmt.Println("------------7------------")
 	mylearn.CarTest()
+	fmt.Println("------------8------------")
+	mylearn.Minterface()
+	mylearn.OpenFil()
+	fmt.Println("------------9------------")
+    mylearn.QsqrtTest()
 }

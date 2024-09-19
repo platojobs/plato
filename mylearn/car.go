@@ -33,6 +33,8 @@ func (c *Car) consumeOil(flueleft float64, aver_construction float64) (distance 
 	return flueleft / aver_construction * 100
 }
 
+
+
 func CarTest() {
 	var cim carInMotion
 	cr := Car{"红色"}
@@ -44,4 +46,53 @@ func CarTest() {
 	distance := cim.consumeOil(27, 6.3)
 	fmt.Println(distance)
 
+
+
+	var a,b interface{}
+	a = 711
+	b = "hello"
+	value_a, a_ok := a.(int)
+	fmt.Printf("value_a=%v,a_ok = %v",value_a,a_ok) //value_a=711,a_ok = true
+	
+    value_b , b_ok := b.(string)
+	fmt.Printf("value_b=%v,b_ok = %v",value_b,b_ok) //value_b=hello,b_ok = true
+
+
+	var r runner
+	pn := person{
+		name: "zhangsan",
+		age:  18,
+		legs: 2,
+	}
+	r = &pn
+	r.run()
+	value_pn , ok_pn := r.(*person)
+	fmt.Printf("value_pn=%v,ok_pn=%v",value_pn,ok_pn)
+    ct := Car{"red"}
+	r = &ct
+    value_ct,ok_ct := r.(*person)
+    fmt.Printf("value_ct=%v,ok_ct=%v",value_ct,ok_ct)
+
+}
+
+
+
+
+
+type runner interface {
+	run()
+}
+
+type person struct {
+	name string
+	age int
+	legs int
+}
+
+func (p *person) run() {
+	fmt.Printf("%v is running\n,has %v legs age = %v",p.name,p.legs,p.age)
+}
+
+func(c *Car)run(){
+	fmt.Println("%v is running")
 }
