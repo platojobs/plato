@@ -38,5 +38,5 @@ func main() {
 	mylearn.Minterface()
 	mylearn.OpenFil()
 	fmt.Println("------------9------------")
-    mylearn.QsqrtTest()
+	mylearn.QsqrtTest()
 }
