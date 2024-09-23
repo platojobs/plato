@@ -377,3 +377,4 @@ func Foo(a, b int) (i int, err error) {
 	return
 	
   }
+
