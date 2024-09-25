@@ -2,7 +2,7 @@ package mylearn
 
 import (
 	"fmt"
-	"mymath"
+	"project01/mymath"
 	"strings"
 	"errors"
 )

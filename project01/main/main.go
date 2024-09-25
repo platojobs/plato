@@ -3,14 +3,49 @@ package main
 import (
 	"fmt"
 	"maps"
+	"unicode/utf8"
+
 	//"mutiresult"
 	//"deferFunc"
-	"mylearn"
+	"project01/mylearn"
+	"project01/mymath"
+	// "project01/mymath"
+	"project01/redis"
 )
 
 func main() {
 	
-	mapFunc()
+//	mapFunc()
+	//sums("a","b","c")
+//	fmt.Println(sums("a","b","c"))
+
+	// next := insss()
+	// fmt.Println(next())
+	// fmt.Println(next())
+	// fmt.Println(next())
+	// newnext := insss()
+	// fmt.Println(newnext())
+	// fmt.Println(factorial(7))
+
+	i := 10
+	fmt.Println(i)
+	zeroral(i)
+	fmt.Println(i)
+	zeroptr(&i)
+	fmt.Println(i)
+	fmt.Println("pointer:=",&i)
+    stringDD()
+    
+	//mymath.TTest()
+   // mymath.TestEnum()
+	//mymath.StructIn()
+	//mymath.GnericsTest()
+	//mymath.EroorsTest()
+    //mymath.CustomError()
+	//mymath.GoroutinesTest()
+	//mymath.ChanTest()
+	mymath.EroorsTest()
+	redis.Redis()
 }
 
 func testUU(){
@@ -169,13 +204,84 @@ func mapFunc(){
 	}
 
 
-	clear(m)
-	fmt.Println(m)
+	//clear(m)
+	//fmt.Println(m)
 
+    sint := add(2,3)
+	fmt.Println(sint)
+
+	for key,i := range m{
+	    fmt.Printf("key=%s,value=%s\n",key,i)
+	}
 
 }
 
 
 
 
+//参数类型相同，可以只写最后一个
+func add(a,d int)int{
+	return a + d
+}
 
+//函数的可变参数
+func sums(nums ...string) string{
+     s := ""
+	 for _,i := range nums{
+		 s += i
+	 }
+	 return s
+}
+
+// 闭包
+func insss() func () int {
+	i := 0
+	return  func() int {
+		i++
+		//fmt.Println(i)
+		return i
+	}
+	//闭包
+}
+
+func factorial(n int) int {
+	if n == 0 {
+		return 1
+	}
+	return n * factorial(n-1)
+}
+
+func zeroral(intarl int){
+	intarl = 0
+}
+func zeroptr(intarl *int){
+	*intarl = 0
+}
+
+func stringDD(){
+	 const s = "สวัสดี"
+	 fmt.Println("len=",len(s))
+	 for i := 0; i < len(s); i++ {
+		fmt.Printf("%v=%x ",i, s[i])
+	 }
+	 fmt.Println("Runne count :", utf8.RuneCountInString(s))
+
+	 for idx, runeValue := range s {
+		fmt.Printf("%#U starts at %d\n", runeValue, idx)
+	 }
+	 fmt.Println("\nUsing DecodeRuneInString.")
+	 for i, w := 0, 0; i < len(s); i += w {
+		runeValue, width := utf8.DecodeRuneInString(s[i:])
+		fmt.Printf("%#U starts at %d\n", runeValue, i)
+		w = width
+		examineRune(runeValue)
+	 }
+}
+
+func examineRune(r rune) {
+	if r == 't' {
+		fmt.Println("found tee")
+	} else if r == 'ส' {
+		fmt.Println("found so sua")
+	}
+}
