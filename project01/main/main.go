@@ -10,7 +10,7 @@ import (
 	"project01/mylearn"
 	"project01/mymath"
 	// "project01/mymath"
-	"project01/redis"
+	//"project01/redis"
 )
 
 func main() {
@@ -45,7 +45,7 @@ func main() {
 	//mymath.GoroutinesTest()
 	//mymath.ChanTest()
 	mymath.EroorsTest()
-	redis.Redis()
+	//redis.Redis()
 }
 
 func testUU(){
