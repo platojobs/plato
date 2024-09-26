@@ -11,11 +11,21 @@ import (
 	"project01/mymath"
 	// "project01/mymath"
 	//"project01/redis"
+	"project01/std"
 )
 
 func main() {
 	
-//	mapFunc()
+	//std.FMT()
+	//std.Sprint()
+    std.Time_Test()
+}
+
+
+
+func othertest(){
+
+	//	mapFunc()
 	//sums("a","b","c")
 //	fmt.Println(sums("a","b","c"))
 
@@ -26,15 +36,6 @@ func main() {
 	// newnext := insss()
 	// fmt.Println(newnext())
 	// fmt.Println(factorial(7))
-
-	i := 10
-	fmt.Println(i)
-	zeroral(i)
-	fmt.Println(i)
-	zeroptr(&i)
-	fmt.Println(i)
-	fmt.Println("pointer:=",&i)
-    stringDD()
     
 	//mymath.TTest()
    // mymath.TestEnum()
@@ -47,6 +48,21 @@ func main() {
 	mymath.EroorsTest()
 	//redis.Redis()
 }
+
+
+
+
+func stes(){
+	i := 10
+	fmt.Println(i)
+	zeroral(i)
+	fmt.Println(i)
+	zeroptr(&i)
+	fmt.Println(i)
+	fmt.Println("pointer:=",&i)
+    stringDD()
+}
+
 
 func testUU(){
 	const boilingF = 212.0 //常量
