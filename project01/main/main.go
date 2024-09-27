@@ -9,9 +9,10 @@ import (
 	//"deferFunc"
 	"project01/mylearn"
 	"project01/mymath"
-	// "project01/mymath"
 	//"project01/redis"
 	"project01/std"
+	"project01/dup01"
+	//"project01/pgin"
 )
 
 func main() {
@@ -19,8 +20,11 @@ func main() {
 	//std.FMT()
 	//std.Sprint()
     std.Time_Test()
+	mymath.TTuser()
+	dup01.Dup01()
+	//pgin.PingHandler()
+	
 }
-
 
 
 func othertest(){
