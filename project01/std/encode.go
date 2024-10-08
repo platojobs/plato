@@ -120,4 +120,8 @@ func TTTRR(){
 	fmt.Println(len(ch))
 	// 查看当前通道的容量
 	fmt.Println(cap(ch))
+
+
+	
+
 }

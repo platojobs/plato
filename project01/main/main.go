@@ -4,17 +4,19 @@ import (
 	"fmt"
 	"maps"
 	"unicode/utf8"
-
+     "net/http"
 	//"mutiresult"
 	//"deferFunc"
+	"project01/gee"
 	"project01/mylearn"
 	"project01/mymath"
+
 	//"project01/pgin"
 	//"project01/redis"
-	 "project01/std"
+	//"project01/std"
 	//"project01/dup01"
 	//"project01/pgin"
-
+	//"project01/gee"
 )
 
 func main() {
@@ -28,7 +30,17 @@ func main() {
 	// pgin.CreateTable()
 	//std.EncodeTT()
 	//std.PrrrTT()
-	std.PPmain()
+	//std.PPmain()
+
+	engine := gee.New()
+	engine.GET("/", func(c *gee.Context) {
+		c.HTML(http.StatusOK, "<h1>Hello Gee</h1>")
+	})
+	engine.GET("/hello", func(c *gee.Context) {
+		// expect /hello?name=geektutu
+		c.String(http.StatusOK, "hello %s, you're at %s\n", c.Query("name"), c.Path)
+	})
+	engine.Run(gee.ListenAddrPort)
 }
 
 
