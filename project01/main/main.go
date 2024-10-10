@@ -3,14 +3,15 @@ package main
 import (
 	"fmt"
 	"maps"
+	"net/http"
 	"unicode/utf8"
-     "net/http"
+
 	//"mutiresult"
 	//"deferFunc"
 	"project01/gee"
 	"project01/mylearn"
 	"project01/mymath"
-
+	"project01/std"
 	//"project01/pgin"
 	//"project01/redis"
 	//"project01/std"
@@ -31,7 +32,11 @@ func main() {
 	//std.EncodeTT()
 	//std.PrrrTT()
 	//std.PPmain()
+     std.ClosureTest()
+	
+}
 
+func gintest(){
 	engine := gee.New()
 	engine.GET("/", func(c *gee.Context) {
 		c.HTML(http.StatusOK, "<h1>Hello Gee</h1>")
@@ -42,6 +47,7 @@ func main() {
 	})
 	engine.Run(gee.ListenAddrPort)
 }
+
 
 
 func othertest(){
